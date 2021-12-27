@@ -325,7 +325,7 @@ body section {
 
 .dot-indicators>*:hover,
 .dot-indicators>*:focus {
-  background-color: hsl(var(--white-color) / 0.8);
+  background-color: hsl(var(--white-color) / 0.7);
 }
 
 .dot-indicators>[aria-selected="true"] {
@@ -340,13 +340,13 @@ body section {
   height: 50px;
   margin-inline: auto;
   color: hsl(var(--white-color));
-  border: 1px solid hsl(var(--white-color) / 0.2);
+  border: 1px solid hsl(var(--white-color) / 0.25);
   background-color: hsl(var(--white-color) / 0);
 }
 
 .number-indicators>*:hover,
 .number-indicators>*:focus {
-  border: 1px solid hsl(var(--white-color) / 0.5);
+  border: 1px solid hsl(var(--white-color) / 0.7);
 }
 
 .number-indicators>[aria-selected="true"] {

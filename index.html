@@ -1,30 +1,48 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="stylesheet" href="css/styles.css">
-    <title>Space Tourism - Home</title>
-  </head>
-  <body>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Font API -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Space Tourism - Home</title>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header class="flex">
     <div class="">
-      <div class="">00 Home</div>
-      <div class="">01 Destination</div>
-      <div class="">02 Crew</div>
-      <div class="">03 Technology</div>
+      <img src="assets/logo.svg" alt="Space Tourism Logo">
     </div>
-    <div class="">
-      <div class="">
-        <h2>So, you want to travel to</h2>
-        <h1>Space</h1>
-        <p>Let's face it: if you want to go to space, you might as well genuinely go to outer space
+    <nav>
+      <ul class="primary-navigation underline-selection flex">
+        <li class=""><a href="index.html"><span>01</span> Home</a></li>
+        <li><a href="destination.html"><span>02</span> Destination</a></li>
+        <li><a href="crew.html"><span>03</span> Crew</a></li>
+        <li><a href="technology.html"><span>03</span> Technology</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="grid-container">
+    <div>
+      <h1 class="text-accent uppercase ff-sans-cond fs-500 letter-spacing-lg">So, you want to travel to<br>
+        <span class="text-white ff-serif fs-900">Space</span>
+      </h1>
+      <p class="text-accent">Let's face it: if you want to go to space, you might as well genuinely go to outer space
         and not hover kind of on the edge of it. Well sit back, and relax, because we'll give you a
         truly out of this world experience!</p>
-      </div>
-      <div class="">
-        <h3>Explore</h3>
-      </div>
     </div>
-  </body>
+    <div>
+      <a href="#" class="large-button bg-white text-dark uppercase ff-serif fs-600">Explore</a>
+    </div>
+  </div>
+</body>
+
 </html>
