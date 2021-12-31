@@ -8,14 +8,32 @@
   --ff-serif: 'Bellefair', serif;
   --ff-sans-cond: 'Barlow Condensed', sans-serif;
   --ff-sans-normal: 'Barlow', sans-serif;
-  --fs-900: 9.375rem;
-  --fs-800: 6.25rem;
-  --fs-700: 3.5rem;
-  --fs-600: 2rem;
+  --fs-900: clamp(5rem, 8vw + 1rem, 9.375rem);
+  --fs-800: 3.5rem;
+  --fs-700: 1.5rem;
+  --fs-600: 1rem;
   --fs-500: 1.75rem;
-  --fs-400: 1.125rem;
+  --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
+}
+
+@media (min-width: 35em) {
+  :root {
+    --fs-800: 5rem;
+    --fs-700: 2.5rem;
+    --fs-600: 1.5rem;
+    --fs-400: 1rem;
+  }
+}
+
+@media (min-width: 45em) {
+  :root {
+    --fs-800: 6.25rem;
+    --fs-700: 3.5rem;
+    --fs-600: 2rem;
+    --fs-400: 1.125rem;
+  }
 }
 
 /* CSS Reset */
@@ -48,6 +66,9 @@ body {
   font-size: var(--fs-400);
   line-height: 1.5;
   min-height: 100vh;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  grid-template-areas: "nav""content";
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -78,16 +99,34 @@ body {
 
 .grid-container {
   display: grid;
-  grid-column-gap: 2rem;
-  grid-template-columns: minmax(2rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(2rem, 1fr);
+  text-align: center;
+  place-items: center;
+  padding-inline: 1rem;
 }
 
-.grid-container > *:first-child {
-  grid-column: 2;
+.grid-container > * {
+  max-width: 50ch;
 }
 
-.grid-container > *:last-child {
-  grid-column: 3;
+@media (min-width: 45em) {
+  .grid-container {
+    column-gap: 2rem;
+    text-align: left;
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(1rem, 1fr);
+  }
+
+  .grid-container>*:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container>*:last-child {
+    grid-column: 3;
+  }
+
+  #home .grid-container {
+    align-items: end;
+    padding-bottom: max(1rem, 15vh);
+  }
 }
 
 .sr-only {
@@ -234,6 +273,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   display: inline-grid;
+  font-size: 2rem;
   padding: 0 2rem;
   position: relative;
   place-items: center;
@@ -256,4 +296,27 @@ body {
 .large-button:focus::after {
   opacity: 1;
   transform: scale(1.45);
+}
+
+/* Background */
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+
+#home {
+  background-image: url("../assets/home/background-home-mobile.jpg");
+}
+
+@media (min-width: 35em) {
+  #home {
+    background-position: center center;
+    background-image: url("../assets/home/background-home-tablet.jpg");
+  }
+}
+
+@media (min-width: 45em) {
+  #home {
+    background-image: url("../assets/home/background-home-desktop.jpg");
+  }
 }

@@ -13,14 +13,20 @@
   <title>Space Tourism - Home</title>
 </head>
 
-<body>
+<body id="home">
+
   <!-- Navigation -->
   <header class="flex">
     <div class="">
       <img src="assets/logo.svg" alt="Space Tourism Logo">
     </div>
+
+    <button class="mobile-nav-toggle" aria-controls="nav-bar">
+      <span class="sr-only" aria-expanded="false">Menu</span>
+    </button>
+
     <nav>
-      <ul class="primary-navigation underline-selection flex">
+      <ul id="nav-bar" class="primary-navigation underline-selection flex">
         <li class=""><a href="index.html"><span>01</span> Home</a></li>
         <li><a href="destination.html"><span>02</span> Destination</a></li>
         <li><a href="crew.html"><span>03</span> Crew</a></li>
@@ -43,6 +49,7 @@
       <a href="#" class="large-button bg-white text-dark uppercase ff-serif fs-600">Explore</a>
     </div>
   </div>
+
 </body>
 
 </html>
