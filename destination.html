@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Google Font API -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;700&family=Bellefair&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Space Tourism - Destination</title>
+</head>
+
+<body id="destination">
+  <a class="skip-to-content fs-200 uppercase letter-spacing-md" href="#main">Skip to Content</a>
+
+  <!-- Navigation -->
+  <header class="navigation-bar flex">
+    <div>
+      <img src="assets/logo.svg" class="logo" alt="Space Tourism Logo">
+    </div>
+
+    <button class="mobile-nav-toggle" aria-controls="nav-bar">
+      <span class="sr-only" aria-expanded="false">Menu</span>
+    </button>
+
+    <nav>
+      <ul id="nav-bar" class="primary-navigation underline-selection flex" data-visible="false">
+        <li><a href="index.html"><span aria-hidden="true">01</span> Home</a></li>
+        <li class="active"><a href="destination.html"><span aria-hidden="true">02</span> Destination</a></li>
+        <li><a href="crew.html"><span aria-hidden="true">03</span> Crew</a></li>
+        <li><a href="technology.html"><span aria-hidden="true">04</span> Technology</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="grid-container grid-container--destination">
+
+    <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
+    <img src="./assets/destination/image-moon.png" alt="Destination-Moon">
+
+    <div class="underline-selection selection-tab">
+      <!-- Selection Tab -->
+      <button aria-selected="true" aria-controls="moon" href="">Moon</button>
+      <button aria-selected="false" href="">Mars</button>
+      <button aria-selected="false" href="">Europa</button>
+      <button aria-selected="false" href="">Titan</button>
+    </div>
+
+    <article id="moon" class="destination-info">
+      <!-- Destination Information -->
+      <h2 class="ff-serif fs-800 uppercase">Moon</h2>
+      <p class="text-accent">See our planet as you’ve never seen it before. A perfect relaxing trip away to help
+        regain perspective and come back refreshed. While you’re there, take in some history
+        by visiting the Luna 2 and Apollo 11 landing sites.</p>
+      <!-- Destination Meta Properties -->
+      <div class="destination-meta flex">
+        <div>
+          <h3 class="ff-sans-cond fs-200 text-accent letter-spacing-sm uppercase">Avg. distance</h3>
+          <p class="ff-serif fs-500 uppercase">384,400 km</p>
+        </div>
+        <div>
+          <h3 class="ff-sans-cond fs-200 text-accent letter-spacing-sm uppercase">Est. travel time</h3>
+          <p class="ff-serif fs-500 uppercase">3 days</p>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <script src="js/index.js" charset="utf-8"></script>
+
+</body>
+
+</html>

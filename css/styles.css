@@ -12,7 +12,7 @@
   --fs-800: 3.5rem;
   --fs-700: 1.5rem;
   --fs-600: 1rem;
-  --fs-500: 1.75rem;
+  --fs-500: 1rem;
   --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
@@ -23,6 +23,7 @@
     --fs-800: 5rem;
     --fs-700: 2.5rem;
     --fs-600: 1.5rem;
+    --fs-500: 1.25rem;
     --fs-400: 1rem;
   }
 }
@@ -32,6 +33,7 @@
     --fs-800: 6.25rem;
     --fs-700: 3.5rem;
     --fs-600: 2rem;
+    --fs-500: 1.75rem;
     --fs-400: 1.125rem;
   }
 }
@@ -95,38 +97,6 @@ body {
   max-width: 80rem;
   margin-inline: auto;
   padding-inline: 2em;
-}
-
-.grid-container {
-  display: grid;
-  text-align: center;
-  place-items: center;
-  padding-inline: 1rem;
-}
-
-.grid-container>* {
-  max-width: 50ch;
-}
-
-@media (min-width: 50em) {
-  .grid-container {
-    column-gap: 2rem;
-    text-align: left;
-    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(1rem, 1fr);
-  }
-
-  .grid-container>*:first-child {
-    grid-column: 2;
-  }
-
-  .grid-container>*:last-child {
-    grid-column: 3;
-  }
-
-  #home .grid-container {
-    align-items: end;
-    padding-bottom: max(7rem, 20vh);
-  }
 }
 
 .sr-only {
@@ -246,6 +216,172 @@ body {
 
 .fs-200 {
   font-size: var(--fs-200);
+}
+
+/* Background - Mobile */
+body {
+  background-size: cover;
+  background-position: bottom center;
+}
+
+#home {
+  background-image: url("../assets/home/background-home-mobile.jpg");
+}
+
+#destination {
+  background-image: url("../assets/destination/background-destination-mobile.jpg");
+}
+
+#crew {
+  background-image: url("../assets/crew/background-crew-mobile.jpg");
+}
+
+#technology {
+  background-image: url("../assets/technology/background-technology-mobile.jpg");
+}
+
+/* Background - Tablet */
+@media (min-width: 35em) {
+  #home {
+    background-position: center center;
+    background-image: url("../assets/home/background-home-tablet.jpg");
+  }
+
+  #destination {
+    background-image: url("../assets/destination/background-destination-tablet.jpg");
+  }
+
+  #crew {
+    background-image: url("../assets/crew/background-crew-tablet.jpg");
+  }
+
+  #technology {
+    background-image: url("../assets/technology/background-technology-tablet.jpg");
+  }
+}
+
+/* Background - Desktop */
+@media (min-width: 50em) {
+  #home {
+    background-image: url("../assets/home/background-home-desktop.jpg");
+  }
+
+  #destination {
+    background-image: url("../assets/destination/background-destination-desktop.jpg");
+  }
+
+  #crew {
+    background-image: url("../assets/crew/background-crew-desktop.jpg");
+  }
+
+  #technology {
+    background-image: url("../assets/technology/background-technology-desktop.jpg");
+  }
+}
+
+/* Layout - Main Content */
+.grid-container {
+  display: grid;
+  text-align: center;
+  place-items: center;
+  padding-inline: 1rem;
+  padding-bottom: 3rem;
+}
+
+.grid-container>* {
+  max-width: 50ch;
+}
+
+/* Layout - Destinations */
+.grid-container--destination {
+  grid-template-areas:
+    'title'
+    'image'
+    'tabs'
+    'content';
+}
+
+.grid-container--destination > *:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.grid-container--destination .numbered-title {
+  grid-area: title;
+}
+
+.grid-container--destination img {
+  grid-area: image;
+  max-width: 60%;
+}
+
+.grid-container--destination .selection-tab {
+  grid-area: tabs;
+}
+
+.grid-container--destination .destination-info {
+  grid-area: content;
+}
+
+.destination-meta {
+  border-top: 1px solid hsl(var(--white-color) / 0.2);
+  flex-direction: column;
+  padding-top: 3rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 35rem) {
+  .grid-container--home {
+    padding-top: 1.5rem;
+  }
+
+  .grid-container--destination .numbered-title {
+    margin-top: 1.5rem;
+  }
+
+  .destination-meta {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+/* Layout - Desktop */
+@media (min-width: 50em) {
+  .grid-container {
+    column-gap: 2rem;
+    text-align: left;
+    grid-template-columns: minmax(1rem, 1fr) repeat(2, minmax(0, 35rem)) minmax(1rem, 1fr);
+  }
+
+  .grid-container--home {
+    align-items: end;
+    padding-bottom: max(5.5rem, 18vh);
+  }
+
+  .grid-container--home>*:first-child {
+    grid-column: 2;
+  }
+
+  .grid-container--home>*:last-child {
+    grid-column: 3;
+  }
+
+  .grid-container--destination {
+    justify-items: start;
+    grid-template-areas:
+      '. title title .'
+      '. image tabs .'
+      '. image content .';
+  }
+
+  .grid-container--destination img {
+    max-width: 90%;
+    justify-self: center;
+  }
+
+  .destination-meta {
+    --gap: min(7vw, 5.5rem);
+    justify-content: start;
+  }
 }
 
 /* Navigation Bar */
@@ -405,13 +541,19 @@ body {
   border-bottom-color: hsl(var(--white-color));
 }
 
+/* Home - Text */
+.index-header {
+  font-size: 28px;
+}
+
 /* Explore Button */
 .large-button {
   aspect-ratio: 1;
   border-radius: 50%;
   display: inline-grid;
-  font-size: 2.3rem;
-  padding: 0 2rem;
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  padding: 0 clamp(2rem, 3.5vw, 3rem);
   position: relative;
   place-items: center;
   text-decoration: none;
@@ -435,25 +577,26 @@ body {
   transform: scale(1.45);
 }
 
-/* Background */
-body {
-  background-size: cover;
-  background-position: bottom center;
+/* Destination Page */
+.numbered-title {
+  font-family: var(--ff-sans-cond);
+  font-size: var(--fs-600);
+  letter-spacing: 4.72px;
+  padding: 1.6rem 0;
+  text-transform: uppercase;
 }
 
-#home {
-  background-image: url("../assets/home/background-home-mobile.jpg");
+.numbered-title span {
+  color: hsl(var(--white-color) / 0.25);
+  font-weight: 700;
+  margin-right: 0.5em;
 }
 
-@media (min-width: 35em) {
-  #home {
-    background-position: center center;
-    background-image: url("../assets/home/background-home-tablet.jpg");
-  }
-}
-
-@media (min-width: 50em) {
-  #home {
-    background-image: url("../assets/home/background-home-desktop.jpg");
-  }
+.selection-tab button {
+  background: transparent;
+  color: hsl(var(--light-color));
+  font-family: var(--ff-sans-cond);
+  letter-spacing: 2.7px;
+  margin-inline: 0.7em;
+  text-transform: uppercase;
 }
