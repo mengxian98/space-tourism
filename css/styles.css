@@ -58,7 +58,7 @@ button, input, textarea, select {
 
 picture, img {
   max-width: 100%;
-  display: block;
+  /* display: block; */
 }
 
 body {
