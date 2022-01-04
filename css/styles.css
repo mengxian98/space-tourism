@@ -99,6 +99,22 @@ body {
   padding-inline: 2em;
 }
 
+.flow > * {
+  margin-block: var(--flow-space, 0.5rem);
+}
+
+.flow--space-sm {
+  --flow-space: 0.25rem;
+}
+
+.flow--space-md {
+  --flow-space: 0.75rem;
+}
+
+.flow--space-lg {
+  --flow-space: 1.5rem;
+}
+
 .sr-only {
   border: 0;
   height: 1px;
@@ -284,15 +300,14 @@ body {
   display: grid;
   text-align: center;
   place-items: center;
-  padding-inline: 1rem;
-  padding-bottom: 3rem;
+  padding: 1rem 1rem 3rem;
 }
 
 .grid-container>* {
   max-width: 50ch;
 }
 
-/* Layout - Destinations */
+/* Layout - Destinations, Crew */
 .grid-container--destination {
   grid-template-areas:
     'title'
@@ -301,46 +316,66 @@ body {
     'content';
 }
 
-.grid-container--destination > *:not(:first-child) {
-  margin-top: 2rem;
+.grid-container--crew {
+  grid-template-areas:
+    'title'
+    'image'
+    'tabs'
+    'content';
 }
 
-.grid-container--destination .numbered-title {
+.grid-container--destination .numbered-title,
+.grid-container--crew .numbered-title {
   grid-area: title;
 }
 
-.grid-container--destination img {
+.grid-container--destination picture {
   grid-area: image;
   max-width: 60%;
 }
 
-.grid-container--destination .selection-tab {
+.grid-container--crew picture {
+  border-bottom: 1px solid hsl(var(--white-color) / 0.1);
+  grid-area: image;
+  max-width: 55%;
+}
+
+.grid-container--destination .selection-tab,
+.grid-container--crew .dot-indicators {
   grid-area: tabs;
 }
 
-.grid-container--destination .destination-info {
+.grid-container--destination .destination-info,
+.grid-container--crew .crew-information {
   grid-area: content;
+  margin-top: 0;
 }
 
 .destination-meta {
   border-top: 1px solid hsl(var(--white-color) / 0.2);
   flex-direction: column;
-  padding-top: 3rem;
-  margin-top: 3rem;
+  padding-top: 3.5rem;
+  margin-top: 3.5rem;
 }
 
+/* Layout - Tablet */
 @media (min-width: 35rem) {
-  .grid-container--home {
-    padding-top: 1.5rem;
-  }
-
-  .grid-container--destination .numbered-title {
-    margin-top: 1.5rem;
-  }
-
   .destination-meta {
     flex-direction: row;
     justify-content: space-evenly;
+  }
+
+  .grid-container--crew {
+    padding-bottom: 0;
+    grid-template-areas:
+      'title'
+      'content'
+      'tabs'
+      'image';
+  }
+
+  .grid-container--crew picture {
+    margin-bottom: 0;
   }
 }
 
@@ -354,7 +389,7 @@ body {
 
   .grid-container--home {
     align-items: end;
-    padding-bottom: max(5.5rem, 18vh);
+    padding-bottom: max(4.5rem, 16vh);
   }
 
   .grid-container--home>*:first-child {
@@ -373,7 +408,7 @@ body {
       '. image content .';
   }
 
-  .grid-container--destination img {
+  .grid-container--destination picture {
     max-width: 90%;
     justify-self: center;
   }
@@ -381,6 +416,22 @@ body {
   .destination-meta {
     --gap: min(7vw, 5.5rem);
     justify-content: start;
+  }
+
+  .grid-container--crew {
+    justify-items: start;
+    grid-template-areas:
+      '. title image .'
+      '. content image .'
+      '. tabs image .';
+    grid-template-rows: minmax(min-content, 1fr) min-content minmax(min-content, 1fr);
+  }
+
+  .grid-container--crew picture {
+    margin-bottom: 0;
+    max-width: 80%;
+    align-self: end;
+    justify-self: center;
   }
 }
 
@@ -525,7 +576,7 @@ body {
 .underline-selection>* {
   border: 0;
   cursor: pointer;
-  padding: var(--underline-gap, 1rem) 0;
+  padding: var(--underline-gap, 0.55rem) 0;
   border-bottom: 3px solid hsl(var(--white-color) / 0);
   transition: 200ms linear;
 }
@@ -539,11 +590,6 @@ body {
 .underline-selection>[aria-selected="true"] {
   color: hsl(var(--white-color));
   border-bottom-color: hsl(var(--white-color));
-}
-
-/* Home - Text */
-.index-header {
-  font-size: 28px;
 }
 
 /* Explore Button */
@@ -582,7 +628,6 @@ body {
   font-family: var(--ff-sans-cond);
   font-size: var(--fs-600);
   letter-spacing: 4.72px;
-  padding: 1.6rem 0;
   text-transform: uppercase;
 }
 
@@ -599,4 +644,34 @@ body {
   letter-spacing: 2.7px;
   margin-inline: 0.7em;
   text-transform: uppercase;
+}
+
+.destination-meta p {
+  font-size: 28px;
+}
+
+/* Crew Page */
+.crew-role {
+  color: hsl(var(--white-color) / 0.5);
+  font-family: var(--ff-serif);
+  font-size: var(--fs-600);
+  text-transform: uppercase;
+}
+
+.dot-indicators>* {
+  border: 0;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0.4rem;
+  background-color: hsl(var(--white-color) / 0.25);
+}
+
+.dot-indicators>*:hover,
+.dot-indicators>*:focus {
+  background-color: hsl(var(--white-color) / 0.7);
+}
+
+.dot-indicators>[aria-selected="true"] {
+  background-color: hsl(var(--white-color));
 }
