@@ -27,10 +27,10 @@
 
     <nav>
       <ul id="nav-bar" class="primary-navigation underline-selection flex" data-visible="false">
-        <li><a href="index.html"><span aria-hidden="true">01</span> Home</a></li>
-        <li class="active"><a href="destination.html"><span aria-hidden="true">02</span> Destination</a></li>
-        <li><a href="crew.html"><span aria-hidden="true">03</span> Crew</a></li>
-        <li><a href="technology.html"><span aria-hidden="true">04</span> Technology</a></li>
+        <li><a href="index.html"><span aria-hidden="true">00</span> Home</a></li>
+        <li class="active"><a href="destination.html"><span aria-hidden="true">01</span> Destination</a></li>
+        <li><a href="crew.html"><span aria-hidden="true">02</span> Crew</a></li>
+        <li><a href="technology.html"><span aria-hidden="true">03</span> Technology</a></li>
       </ul>
     </nav>
   </header>
@@ -40,31 +40,31 @@
     <h1 class="numbered-title"><span aria-hidden="true">01</span> Pick your destination</h1>
 
     <!-- Image - Moon -->
-    <picture>
+    <picture id="moon-image">
       <source srcset="assets/destination/image-moon.webp" type="image/webp">
       <img src="assets/destination/image-moon.png" alt="Destination-Moon">
     </picture>
 
     <!-- Image - Mars -->
-    <picture hidden>
+    <picture hidden id="mars-image">
       <source srcset="assets/destination/image-mars.webp" type="image/webp">
       <img src="assets/destination/image-mars.png" alt="Planet-Mars">
     </picture>
 
     <!-- Image - Europa -->
-    <picture hidden>
+    <picture hidden id="europa-image">
       <source srcset="assets/destination/image-europa.webp" type="image/webp">
       <img src="assets/destination/image-europa.png" alt="Planet-Europa">
     </picture>
 
     <!-- Image - Titan -->
-    <picture hidden>
+    <picture hidden id="titan-image">
       <source srcset="assets/destination/image-titan.webp" type="image/webp">
       <img src="assets/destination/image-titan.png" alt="Planet-Titan">
     </picture>
 
     <!-- Selection Tab -->
-    <div class="underline-selection selection-tab" role="tablist">
+    <div class="underline-selection selection-tab" role="tablist" aria-label="Destination List">
       <button role="tab" tabindex="0" aria-selected="true" aria-controls="moon" href="">Moon</button>
       <button role="tab" tabindex="-1" aria-selected="false" aria-controls="mars" href="">Mars</button>
       <button role="tab" tabindex="-1" aria-selected="false" aria-controls="europa" href="">Europa</button>
@@ -72,7 +72,7 @@
     </div>
 
     <!-- Destination - Moon -->
-    <article role="tabpanel" id="moon" class="destination-info">
+    <article id="moon" class="destination-info" role="tabpanel" tabindex="0">
       <!-- Destination Information -->
       <h2 class="ff-serif fs-800 uppercase">Moon</h2>
       <p class="text-accent">See our planet as you’ve never seen it before. A perfect relaxing trip away to help
@@ -92,7 +92,7 @@
     </article>
 
     <!-- Destination - Mars -->
-    <article role="tabpanel" id="mars" class="destination-info" hidden>
+    <article id="mars" class="destination-info" role="tabpanel" tabindex="-1" hidden>
       <!-- Destination Information -->
       <h2 class="ff-serif fs-800 uppercase">Mars</h2>
       <p class="text-accent">Don’t forget to pack your hiking boots. You’ll need them to tackle Olympus Mons,
@@ -111,7 +111,7 @@
     </article>
 
     <!-- Destination - Europa -->
-    <article role="tabpanel" id="europa" class="destination-info" hidden>
+    <article id="europa" class="destination-info" role="tabpanel" tabindex="-1" hidden>
       <!-- Destination Information -->
       <h2 class="ff-serif fs-800 uppercase">Europa</h2>
       <p class="text-accent">The smallest of the four Galilean moons orbiting Jupiter, Europa is a
@@ -131,7 +131,7 @@
     </article>
 
     <!-- Destination - Titan -->
-    <article role="tabpanel" id="titan" class="destination-info" hidden>
+    <article id="titan" class="destination-info" role="tabpanel" tabindex="-1" hidden>
       <!-- Destination Information -->
       <h2 class="ff-serif fs-800 uppercase">Titan</h2>
       <p class="text-accent">The only moon known to have a dense atmosphere other than Earth, Titan

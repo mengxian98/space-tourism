@@ -26,6 +26,7 @@ navToggle.addEventListener("click", function() {
 
 // Tab List
 const tabList = document.querySelector('[role="tablist"]');
+const tabPanels = document.querySelectorAll('[role="tabpanel"]');
 const tabs = document.querySelectorAll('[role="tab"]');
 
 tabList.addEventListener("keydown", updateTabFocus);
@@ -54,6 +55,7 @@ function updateTabFocus(event) {
   if (event.keyCode === keydownLeft || event.keyCode === keydownRight) {
     // Unfocus Original Tab
     tabs[tabFocus].setAttribute("tabindex", "-1");
+    tabPanels[tabFocus].setAttribute("tabindex", "-1");
     // Check Left or Right Key
     if (event.keyCode === keydownLeft) {
       if (tabFocus === 0) {
@@ -68,9 +70,9 @@ function updateTabFocus(event) {
         tabFocus++;
       }
     }
-
     // Focus Selected Tab
     tabs[tabFocus].setAttribute("tabindex", "0");
+    tabPanels[tabFocus].setAttribute("tabindex", "0");
     tabs[tabFocus].focus();
   }
 }
@@ -78,20 +80,31 @@ function updateTabFocus(event) {
 function updateActivePanel(targetTab) {
   // Identify Target Panel
   const targetPanel = targetTab.getAttribute("aria-controls");
+  const targetImage = targetPanel + "-image";
   const mainContainer = targetTab.parentNode.parentNode;
 
   // Update Selection Tabs
   targetTab
-    .parentNode.querySelectorAll('[role="tab"]')
-    .forEach((tab) => tab.setAttribute("aria-selected", "false"));
+    .parentNode.querySelector('[aria-selected="true"]')
+    .setAttribute("aria-selected", "false");
 
   targetTab.setAttribute("aria-selected", "true");
 
   // Remove Content
-  mainContainer
-    .querySelectorAll('[role="tabpanel"]')
-    .forEach((panel) => panel.setAttribute("hidden", true));
+  hideContent(mainContainer, '[role="tabpanel"]');
+  hideContent(mainContainer, 'picture');
 
   // Add Content
-  mainContainer.querySelector([`#${targetPanel}`]).removeAttribute("hidden");
+  showContent(mainContainer, `#${targetPanel}`);
+  showContent(mainContainer, `#${targetImage}`);
+}
+
+function hideContent(parent, content) {
+  parent
+    .querySelectorAll(content)
+    .forEach((item) => item.setAttribute("hidden", true));
+}
+
+function showContent(parent, content) {
+  parent.querySelector(content).removeAttribute("hidden");
 }
