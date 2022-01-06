@@ -10,7 +10,7 @@
   --ff-sans-normal: 'Barlow', sans-serif;
   --fs-900: clamp(5rem, 8vw + 1.8rem, 9.375rem);
   --fs-800: 3.5rem;
-  --fs-700: 1.5rem;
+  --fs-700: 2rem;
   --fs-600: 1rem;
   --fs-500: 1rem;
   --fs-400: 0.9375rem;
@@ -28,10 +28,10 @@
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 64em) {
   :root {
     --fs-800: 6.25rem;
-    --fs-700: 3.5rem;
+    --fs-700: clamp(2.1rem, 3.4vw, 3.5rem);
     --fs-600: 2rem;
     --fs-500: 1.75rem;
     --fs-400: 1.125rem;
@@ -99,7 +99,7 @@ body {
   padding-inline: 2em;
 }
 
-.flow > * {
+.flow>* {
   margin-block: var(--flow-space, 0.5rem);
 }
 
@@ -277,7 +277,7 @@ body {
 }
 
 /* Background - Desktop */
-@media (min-width: 50em) {
+@media (min-width: 64em) {
   #home {
     background-image: url("../assets/home/background-home-desktop.jpg");
   }
@@ -304,11 +304,13 @@ body {
 }
 
 .grid-container>* {
-  max-width: 50ch;
+  max-width: 70vw;
 }
 
-/* Layout - Destinations, Crew */
-.grid-container--destination {
+/* Layout - Destinations, Crew, Technology */
+.grid-container--destination,
+.grid-container--crew,
+.grid-container--technology {
   grid-template-areas:
     'title'
     'image'
@@ -316,16 +318,13 @@ body {
     'content';
 }
 
-.grid-container--crew {
-  grid-template-areas:
-    'title'
-    'image'
-    'tabs'
-    'content';
+.grid-container--technology {
+  padding-inline: 0;
 }
 
 .grid-container--destination .numbered-title,
-.grid-container--crew .numbered-title {
+.grid-container--crew .numbered-title,
+.grid-container--technology .numbered-title {
   grid-area: title;
 }
 
@@ -340,8 +339,18 @@ body {
   max-width: 55%;
 }
 
+.grid-container--technology picture {
+  grid-area: image;
+  max-width: 100%;
+}
+
 .grid-container--destination .selection-tab,
 .grid-container--crew .dot-indicators {
+  grid-area: tabs;
+}
+
+.grid-container--technology .number-indicators {
+  --gap: clamp(1.5rem, 3.6vw, 2rem);
   grid-area: tabs;
 }
 
@@ -349,6 +358,10 @@ body {
 .grid-container--crew .crew-information {
   grid-area: content;
   margin-top: 0;
+}
+
+.grid-container--technology .tech-information {
+  grid-area: content;
 }
 
 .destination-meta {
@@ -375,12 +388,13 @@ body {
   }
 
   .grid-container--crew picture {
+    max-width: 50%;
     margin-bottom: 0;
   }
 }
 
 /* Layout - Desktop */
-@media (min-width: 50em) {
+@media (min-width: 64em) {
   .grid-container {
     column-gap: 2rem;
     text-align: left;
@@ -420,18 +434,43 @@ body {
 
   .grid-container--crew {
     justify-items: start;
+    grid-template-rows: minmax(min-content, 1fr) min-content minmax(min-content, 1fr);
+    grid-template-columns: minmax(1rem, 1fr) minmax(0, 36rem) minmax(0, 35rem) minmax(1rem, 1fr);
     grid-template-areas:
       '. title image .'
       '. content image .'
       '. tabs image .';
-    grid-template-rows: minmax(min-content, 1fr) min-content minmax(min-content, 1fr);
   }
 
   .grid-container--crew picture {
+    grid-column: span 2;
     margin-bottom: 0;
     max-width: 80%;
     align-self: end;
     justify-self: center;
+  }
+
+  .grid-container--technology {
+    justify-items: start;
+    grid-template-columns: minmax(1rem, 1fr) minmax(min-content, 1fr) minmax(min-content, 5fr) max-content;
+    grid-template-areas:
+      '. title title title'
+      '. tabs content image';
+  }
+
+  .grid-container--technology picture {
+    align-self: end;
+    justify-self: end;
+    max-width: 95%;
+  }
+
+  .grid-container--technology .number-indicators {
+    flex-direction: column;
+  }
+
+  .grid-container--crew .crew-information>*:last-child,
+  .grid-container--technology .tech-information>*:last-child {
+    max-width: 88%;
   }
 }
 
@@ -452,7 +491,7 @@ body {
 
 .primary-navigation {
   --underline-gap: 2rem;
-  --gap: clamp(1.2rem, 4.5vw, 3.2rem);
+  --gap: clamp(1.2rem, 5.5vw, 3.6rem);
   background-color: hsl(var(--dark-color) / 0.95);
   padding: 0 clamp(2rem, 7vw, 7rem);
   list-style: none;
@@ -542,13 +581,13 @@ body {
   }
 }
 
-@media (min-width: 35em) and (max-width: 49.999em) {
+@media (min-width: 35em) and (max-width: 63.999em) {
   .primary-navigation span {
     display: none;
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 64em) {
   .navigation-bar {
     margin-top: 1.6rem;
   }
@@ -623,7 +662,7 @@ body {
   transform: scale(1.45);
 }
 
-/* Destination Page */
+/* Numbered Title - Destination, Crew, Technology */
 .numbered-title {
   font-family: var(--ff-sans-cond);
   font-size: var(--fs-600);
@@ -637,6 +676,7 @@ body {
   margin-right: 0.5em;
 }
 
+/* Destination Page */
 .selection-tab button {
   background: transparent;
   color: hsl(var(--light-color));
@@ -674,4 +714,26 @@ body {
 
 .dot-indicators>[aria-selected="true"] {
   background-color: hsl(var(--white-color));
+}
+
+/* Technology Page - Number Indicators */
+.number-indicators>* {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  cursor: pointer;
+  height: clamp(55px, 6vw, 63px);
+  margin-inline: auto;
+  color: hsl(var(--white-color));
+  border: 1px solid hsl(var(--white-color) / 0.25);
+  background-color: hsl(var(--white-color) / 0);
+}
+
+.number-indicators>*:hover,
+.number-indicators>*:focus {
+  border: 1px solid hsl(var(--white-color) / 0.7);
+}
+
+.number-indicators>[aria-selected="true"] {
+  background-color: hsl(var(--white-color));
+  color: hsl(var(--dark-color));
 }
