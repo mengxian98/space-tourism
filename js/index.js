@@ -11,7 +11,7 @@ navToggle.addEventListener("click", function() {
     // Menu Animation
     navMenu.style.animation = "800ms slide-in forwards"
     navToggle.style.backgroundImage = "url('./assets/navigation/icon-close.svg')";
-    navToggle.style.animation = "1000ms fade-in forwards";
+    navToggle.style.animation = "1000ms fade-in-delay forwards";
   } else {
     // Update Attributes
     navMenu.setAttribute("data-visible", "false");

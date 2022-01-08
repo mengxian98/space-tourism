@@ -4,7 +4,7 @@
   --dark-color: 230 35% 7%;
   --light-color: 231 77% 90%;
   --white-color: 0 0% 100%;
-  /* Fonts */
+  /* Fonts - Mobile */
   --ff-serif: 'Bellefair', serif;
   --ff-sans-cond: 'Barlow Condensed', sans-serif;
   --ff-sans-normal: 'Barlow', sans-serif;
@@ -12,12 +12,13 @@
   --fs-800: 3.5rem;
   --fs-700: 2rem;
   --fs-600: 1rem;
-  --fs-500: 1rem;
+  --fs-500: 1.1rem;
   --fs-400: 0.9375rem;
   --fs-300: 1rem;
   --fs-200: 0.875rem;
 }
 
+/* Fonts - Tablet */
 @media (min-width: 35em) {
   :root {
     --fs-800: 5rem;
@@ -28,6 +29,7 @@
   }
 }
 
+/* Fonts - Desktop */
 @media (min-width: 64em) {
   :root {
     --fs-800: 6.25rem;
@@ -58,18 +60,17 @@ button, input, textarea, select {
 
 picture, img {
   max-width: 100%;
-  /* display: block; */
 }
 
 body {
+  display: grid;
+  grid-template-rows: min-content 1fr;
   background: hsl(var(--dark-color));
   color: hsl(var(--white-color));
   font-family: var(--ff-sans-normal);
   font-size: var(--fs-400);
   line-height: 1.5;
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: min-content 1fr;
   overflow-x: hidden;
 }
 
@@ -104,7 +105,7 @@ body {
 }
 
 .flow--space-sm {
-  --flow-space: 0.25rem;
+  --flow-space: 0.5rem;
 }
 
 .flow--space-md {
@@ -300,11 +301,30 @@ body {
   display: grid;
   text-align: center;
   place-items: center;
-  padding: 1rem 1rem 3rem;
+  padding: 1rem 1rem 2.5rem;
 }
 
 .grid-container>* {
   max-width: 70vw;
+}
+
+.grid-container article,
+.grid-container--technology picture,
+.grid-container--destination .selection-tab,
+.grid-container--crew .dot-indicators,
+.grid-container--technology .number-indicators {
+  animation: fade-in ease-in 550ms;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Layout - Destinations, Crew, Technology */
@@ -334,7 +354,6 @@ body {
 }
 
 .grid-container--crew picture {
-  border-bottom: 1px solid hsl(var(--white-color) / 0.1);
   grid-area: image;
   max-width: 55%;
 }
@@ -414,6 +433,10 @@ body {
     grid-column: 3;
   }
 
+  .grid-container--home .large-button {
+    margin-left: 7vw;
+  }
+
   .grid-container--destination {
     justify-items: start;
     grid-template-areas:
@@ -444,10 +467,16 @@ body {
 
   .grid-container--crew picture {
     grid-column: span 2;
+    margin-right: 5vw;
     margin-bottom: 0;
     max-width: 80%;
     align-self: end;
     justify-self: center;
+  }
+
+  .grid-container--crew picture#specialist-image {
+    margin-right: 10vw;
+    max-width: 70%;
   }
 
   .grid-container--technology {
@@ -470,7 +499,7 @@ body {
 
   .grid-container--crew .crew-information>*:last-child,
   .grid-container--technology .tech-information>*:last-child {
-    max-width: 88%;
+    max-width: 90%;
   }
 }
 
@@ -566,7 +595,7 @@ body {
     z-index: 2000;
   }
 
-  @keyframes fade-in {
+  @keyframes fade-in-delay {
     0% {
       opacity: 0;
     }
@@ -631,14 +660,67 @@ body {
   border-bottom-color: hsl(var(--white-color));
 }
 
-/* Explore Button */
+/* Home Page - Animation */
+.grid-container--home h1 {
+  animation: slide-up ease-in 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.grid-container--home h1 span {
+  animation: space-out ease-in-out 1.6s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+.grid-container--home .home-text {
+  animation: fade-in ease-in 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  opacity: 0;
+}
+
+.grid-container--home .large-button {
+  animation: fade-in ease-out 1.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 7s;
+  opacity: 0;
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes space-out {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+    letter-spacing: clamp(0.5rem, 3vw, 1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Home Page - Explore Button */
 .large-button {
   aspect-ratio: 1;
   border-radius: 50%;
   display: inline-grid;
   font-size: 2rem;
-  margin-top: 1.5rem;
-  padding: 0 clamp(2rem, 3.5vw, 3rem);
+  padding: 0 clamp(2.3rem, 3.5vw, 3.2rem);
   position: relative;
   place-items: center;
   text-decoration: none;
@@ -703,7 +785,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   cursor: pointer;
-  padding: 0.4rem;
+  padding: 0.5rem;
   background-color: hsl(var(--white-color) / 0.25);
 }
 
@@ -721,7 +803,7 @@ body {
   aspect-ratio: 1;
   border-radius: 50%;
   cursor: pointer;
-  height: clamp(55px, 6vw, 63px);
+  height: clamp(50px, 6vw, 60px);
   margin-inline: auto;
   color: hsl(var(--white-color));
   border: 1px solid hsl(var(--white-color) / 0.25);
